@@ -22,17 +22,16 @@
 ## its inverse. Upon calling makeCacheMatrix, a list with these internal functions is returned.
 ## 
 makeCacheMatrix <- function(x = matrix()) {
-    m <- NULL
-    set <- function(y) {
-        x <<- y
-        m <<- NULL
-    }
-    get <- function() x
-    setinverse <- function(inverse) m <<- inverse
-    getinverse <- function() m
-    list(set = set, get = get,
-         setinverse = setinverse,
-         getinverse = getinverse)
+    i <- NULL
+    list(
+        set = function(y) {
+            x <<- y
+            i <<- NULL
+        },
+        get = function() x,
+        setinverse = function(inverse) i <<- inverse,
+        getinverse = function() i
+    )
 }
 
 
